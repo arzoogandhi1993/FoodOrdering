@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20B50" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MenuItem" representedClassName="MenuItem" syncable="YES" codeGenerationType="class">
+        <attribute name="completeUrl" optional="YES" attributeType="String"/>
+        <attribute name="detail" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="imgUrl" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="price" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Message" representedClassName="Message" syncable="YES" codeGenerationType="class">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="isCustomer" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sendTime" optional="YES" attributeType="String"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="Order" inverseName="messages" inverseEntity="Order"/>
+    </entity>
+    <entity name="OItem" representedClassName="OItem" syncable="YES" codeGenerationType="class">
+        <attribute name="createTime" optional="YES" attributeType="String"/>
+        <attribute name="imgUrl" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="subOrderId" optional="YES" attributeType="String"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="orderItems" inverseEntity="Order"/>
+    </entity>
+    <entity name="Order" representedClassName="Order" syncable="YES" codeGenerationType="class">
+        <attribute name="isComplete" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isPaid" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="orderId" optional="YES" attributeType="String"/>
+        <attribute name="tableNo" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="order" inverseEntity="Message"/>
+        <relationship name="orderItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OItem" inverseName="order" inverseEntity="OItem"/>
+    </entity>
+    <elements>
+        <element name="MenuItem" positionX="-344.2756958007812" positionY="26.78166198730469" width="128" height="134"/>
+        <element name="Message" positionX="-665.8810424804688" positionY="88.08587646484375" width="128" height="103"/>
+        <element name="OItem" positionX="-291.6781616210937" positionY="-159.1364440917969" width="128" height="148"/>
+        <element name="Order" positionX="-704.0901489257812" positionY="-157.6979522705078" width="128" height="133"/>
+    </elements>
+</model>
